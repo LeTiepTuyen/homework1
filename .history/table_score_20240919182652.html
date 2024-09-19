@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score table</title>
+    <link rel="stylesheet" href="style_table_score.css" />
+  </head>
+  <body>
+    <div class="container">
+      <p class="title">Bảng điểm của em</p>
+      <div class="function">
+        <div class="semester">
+          <p>Semester 1:</p>
+          <input type="text" id="semester1" />
+        </div>
+        <div class="semester">
+          <p>Semester 2:</p>
+          <input type="text" id="semester2" />
+        </div>
+        <div class="year">
+          <p>Year:</p>
+          <select id="yearSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="summarize">
+          <p>Summarize:</p>
+          <input type="text" id="summarize" readonly />
+        </div>
+        <p id="result"></p>
+      </div>
+      <div class="button">
+        <button id="okButton">Ok</button>
+        <button id="cancelButton">Cancel</button>
+      </div>
+    </div>
+    <script>
+      // document.getElementById("okButton").addEventListener("click", function () {
+      //   const semester1 = parseFloat(document.getElementById("semester1").value);
+      //   const semester2 = parseFloat(document.getElementById("semester2").value);
+      //   const year = parseInt(document.getElementById("yearSelect").value);
+
+      //   if (isNaN(semester1) && isNaN(semester2)) {
+      //     document.getElementById("summarize").value = "Invalid input!";
+      //   } else {
+      //     const average = (semester1 + semester2 * year) / (year + 1);
+      //     if (average >= 8) {
+      //       document.getElementById("result").innerHTML = "Học sinh giỏi";
+      //     } else if (average >= 6.5) {
+      //       document.getElementById("result").innerHTML = "Học sinh khá";
+      //     } else if (average >= 5) {
+      //       document.getElementById("result").innerHTML = "Học sinh trung bình";
+      //     } else {
+      //       document.getElementById("result").innerHTML = "Học sinh yếu";
+      //     }
+      //     document.getElementById("summarize").value = average;
+      //   }
+      // });
+
+      // document.getElementById("cancelButton").addEventListener("click", function () {
+      //   document.getElementById("semester1").value = "";
+      //   document.getElementById("semester2").value = "";
+      //   document.getElementById("summarize").value = "";
+      //   document.getElementById("yearSelect").value = "1";
+      //   document.getElementById("result").innerHTML = "";
+      // });
+
+      <script>
+  function getElementValue(id) {
+    return document.getElementById(id).value;
+  }
+
+  function setElementValue(id, value) {
+    document.getElementById(id).value = value;
+  }
+
+  function setResultMessage(message) {
+    document.getElementById("result").innerHTML = message;
+  }
+
+  function clearInputs() {
+    setElementValue("semester1", "");
+    setElementValue("semester2", "");
+    setElementValue("summarize", "");
+    setElementValue("yearSelect", "1");
+    setResultMessage("");
+  }
+
+  document.getElementById("okButton").addEventListener("click", function () {
+    const semester1 = parseFloat(getElementValue("semester1"));
+    const semester2 = parseFloat(getElementValue("semester2"));
+    const year = parseInt(getElementValue("yearSelect"));
+
+    if (isNaN(semester1) || isNaN(semester2)) {
+      setElementValue("summarize", "Invalid input!");
+      setResultMessage("");
+      return;
+    }
+
+    const average = (semester1 + semester2 * year) / (year + 1);
+
+    if (average >= 8) {
+      setResultMessage("Học sinh giỏi");
+    } else if (average >= 6.5) {
+      setResultMessage("Học sinh khá");
+    } else if (average >= 5) {
+      setResultMessage("Học sinh trung bình");
+    } else {
+      setResultMessage("Học sinh yếu");
+    }
+
+    setElementValue("summarize", average);
+  });
+
+  document.getElementById("cancelButton").addEventListener("click", clearInputs);
+</script>
+
+    </script>
+  </body>
+</html>
