@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Box</title>
+    <link rel="stylesheet" href="style_grid_box.css" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <script>
+        for (let j = 1; j <= 5; j++) {
+          if (j % 2 === 0) {
+            for (let i = 1; i <= 10; i++) {
+              document.write('<div class="box-red"></div>');
+            }
+          } else {
+            for (let i = 1; i <= 10; i++) {
+              document.write('<div class="box"></div>');
+            }
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
